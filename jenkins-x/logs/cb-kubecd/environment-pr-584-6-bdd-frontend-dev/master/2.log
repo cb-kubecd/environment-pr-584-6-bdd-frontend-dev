@@ -1,0 +1,321 @@
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1594735684.1940796,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mplace-tools[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-git-source-cb-kubecd-environment-pr-584-6-fsjhw-rsmnj[0m
+{"level":"info","ts":1594735699.4742568,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-dev.git @ v0.0.2 in path /workspace/source"}
+{"level":"warn","ts":1594735699.4743986,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1594735699.532757,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:8e8be1b3871b556684672b3a0c4775d57c4ac686
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-validate-git[0m
+Git configured for user: jenkins-x-bot and email jenkins-x@googlegroups.com
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-verify-preinstall[0m
+no need to reconnect to cluster
+WARNING: Vault is enabled and TLS is not. This means your secrets will be sent to and from your cluster in the clear. See https://jenkins-x.io/docs/getting-started/setup/boot/#ingress for more information
+WARNING: TLS is not enabled so your webhooks will be called using HTTP. This means your webhook secret will be sent to your cluster in the clear. See https://jenkins-x.io/docs/getting-started/setup/boot/#ingress for more information
+Verifying the kubernetes cluster before we try to boot Jenkins X in namespace: **
+Trying to lazily create any missing resources to get the current cluster ready to boot Jenkins X
+Verifying Ingress...
+Clearing the domain 35.240.84.8.nip.io as when using auto-DNS domains we need to regenerate to ensure its always accurate in case the cluster or ingress service is recreated
+
+Using namespace '**' from context named '' on server ''.
+
+Installing kubectl
+Downloading https://storage.googleapis.com/kubernetes-release/release/v1.16.5/bin/linux/amd64/kubectl to /tekton/home/.**/bin/kubectl...
+Downloaded /tekton/home/.**/bin/kubectl
+Installing helm
+Downloading https://get.helm.sh/helm-v2.12.2-linux-amd64.tar.gz to /tekton/home/.**/bin/helm.tgz...
+Downloaded /tekton/home/.**/bin/helm.tgz
+Installing helm secrets plugin
+Verifying the CLI packages using version stream URL: https://github.com/jenkins-x/jenkins-x-versions.git and git ref: v1.0.532
+using version 2.1.99 of **
+CLI packages kubectl, git, helm seem to be setup correctly
+NAME                          VERSION
+Kubernetes cluster            v1.14.10-gke.36
+kubectl (installed in JX_BIN) v1.16.6-beta.0
+helm client                   2.12.2
+git                           2.21.1
+
+Verifying Storage...
+WARNING: No URL provided for storage: logs
+WARNING: No URL provided for storage: reports
+WARNING: No URL provided for storage: repository
+WARNING: Your requirements have not enabled cloud storage for backup - we recommend enabling this for kubernetes provider gke
+Storage configuration looks good
+
+Helm installed and configured
+Ensuring Helm chart repository https://storage.googleapis.com/chartmuseum.jenkins-x.io is configured
+Validating Kaniko secret in namespace **
+
+Cluster looks good, you are ready to '** boot' now!
+
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-jx-crds[0m
+Jenkins X CRDs upgraded with success
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-velero[0m
+Modified file /workspace/source/systems/velero/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-velero
+lock configmap **-lock-velero created
+cleaning the lock configmap **-lock-velero
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-velero-backups[0m
+Modified file /workspace/source/systems/velero-backups/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-velero
+lock configmap **-lock-velero created
+Ignoring templates/default-backup.yaml
+No requirements file: /tmp/**-helm-apply-978469552/velero-backups/requirements.yaml so not checking for missing versions
+cleaning the lock configmap **-lock-velero
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-nginx-controller[0m
+Modified file /workspace/source/systems/**ing/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-kube-system
+lock configmap **-lock-kube-system created
+
+cleaning the lock configmap **-lock-kube-system
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-create-install-values[0m
+Waiting to find the external host name of the ingress controller Service in namespace kube-system with name **ing-nginx-ingress-controller
+No domain flag provided so using default 35.240.84.8.nip.io to generate Ingress rules
+defaulting the domain to 35.240.84.8.nip.io and modified /workspace/source/**-requirements.yml
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-external-dns[0m
+Modified file /workspace/source/systems/external-dns/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-**
+lock configmap **-lock-** created
+Adding missing Helm repo: charts.bitnami.com https://charts.bitnami.com/bitnami
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for https://charts.bitnami.com/bitnami from vault helm/repos
+Successfully added Helm repository charts.bitnami.com.
+cleaning the lock configmap **-lock-**
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-cert-manager-crds[0m
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io configured
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io configured
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io configured
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io configured
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io configured
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io configured
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-cert-manager[0m
+Modified file /workspace/source/systems/cm/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-cert-manager
+lock configmap **-lock-cert-manager created
+Adding missing Helm repo: charts.jetstack.io https://charts.jetstack.io
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for https://charts.jetstack.io from vault helm/repos
+Successfully added Helm repository charts.jetstack.io.
+cleaning the lock configmap **-lock-cert-manager
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-acme-issuer-and-certificate[0m
+Modified file /workspace/source/systems/acme/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-**
+lock configmap **-lock-** created
+Ignoring templates/cert-manager-prod-certificate.yaml
+Ignoring templates/cert-manager-prod-issuer.yaml
+Ignoring templates/cert-manager-staging-certificate.yaml
+Ignoring templates/cert-manager-staging-issuer.yaml
+No requirements file: /tmp/**-helm-apply-526770803/acme/requirements.yaml so not checking for missing versions
+cleaning the lock configmap **-lock-**
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-vault[0m
+Installing vault-operator operator with helm values: [image.repository=banzaicloud/vault-operator image.tag=0.5.3]
+
+Vault operator installed in namespace **
+Applying vault ingress in namespace ** for vault name **-vault-pr-584-6-bdd
+ingress.extensions/**-vault-pr-584-6-bdd unchanged
+WARNING: Upgrading Vault CRD from within the pipeline. No changes to the cloud provider specific configuration will occur.
+Vault '**-vault-pr-584-6-bdd' in namespace '**' updated 
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-create-helm-values[0m
+defaulting to secret storage scheme vault found from requirements file at /workspace/source/**-requirements.yml
+defaulting to secret base path to the cluster name pr-584-6-bdd-frontend found from requirements file at /workspace/source/**-requirements.yml
+generated schema file /workspace/source/env/parameters.schema.json from template /workspace/source/env/parameters.tmpl.schema.json
+Jenkins X Admin Username ***** [Automatically accepted existing value]
+Jenkins X Admin Password *** [Automatically accepted existing value]
+Pipeline bot Git username ************* [Automatically accepted existing value]
+Pipeline bot Git email address jenkins-x@googlegroups.com [Automatically accepted existing value]
+Pipeline bot Git token *** [Automatically accepted existing value]
+HMAC token, used to validate incoming webhooks. Press enter to use the generated token *** [Automatically accepted existing value]
+Do you want to configure non default Docker Registry? false [Automatically accepted existing value]
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-create-jx-auth-config[0m
+Saved the rendered configuration into templates/**-auth-configmap.yaml file
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-jx-auth-config[0m
+Modified file /workspace/source/systems/**-auth/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-**
+lock configmap **-lock-** created
+Ignoring templates/**-auth-configmap.yaml
+No requirements file: /tmp/**-helm-apply-162650326/**-auth/requirements.yaml so not checking for missing versions
+
+cleaning the lock configmap **-lock-**
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-jenkins-x[0m
+Modified file /workspace/source/env/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-**
+lock configmap **-lock-** created
+Ignoring templates/.gitignore
+Applying the kubernetes overrides at ../kubeProviders/gke/values.tmpl.yaml
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+Adding missing Helm repo: charts.cloudbees.com https://charts.cloudbees.com/c**d/cloudbees
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for https://charts.cloudbees.com/c**d/cloudbees from vault helm/repos
+Successfully added Helm repository charts.cloudbees.com.
+
+cleaning the lock configmap **-lock-**
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-verify-jenkins-x-environment[0m
+Storing the requirements in team settings in the dev environment
+Validating git repository for dev environment at URL https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-dev.git
+Validating git repository for production environment at URL https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-production.git
+Using Git provider github at https://github.com
+? Using Git user name: c**d-bot-test
+? Using organisation: cb-kubecd
+Creating repository cb-kubecd/environment-pr-584-6-bdd-frontend-production
+Git repository cb-kubecd/environment-pr-584-6-bdd-frontend-production already exists
+Pushed Git repository to https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-production
+
+Validating git repository for staging environment at URL https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-staging.git
+Using Git provider github at https://github.com
+? Using Git user name: *************
+? Using organisation: cb-kubecd
+Creating repository cb-kubecd/environment-pr-584-6-bdd-frontend-staging
+Git repository cb-kubecd/environment-pr-584-6-bdd-frontend-staging already exists
+Pushed Git repository to https://github.com/cb-kubecd/environment-pr-584-6-bdd-frontend-staging
+
+Environment git repositories look good
+
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-repositories[0m
+Modified file /workspace/source/repositories/Chart.yaml to set the chart to version 2
+creating the lock configmap **-lock-**
+lock configmap **-lock-** created
+Ignoring templates/cb-kubecd-bdd-nh-1594734531-sr.yaml
+Ignoring templates/default-group.yaml
+No requirements file: /tmp/**-helm-apply-160603602/repositories/requirements.yaml so not checking for missing versions
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+
+cleaning the lock configmap **-lock-**
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-install-pipelines[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-update-webhooks[0m
+DEBUG: Finding service url for hook in namespace **
+DEBUG: Couldn't find service url, attempting to look up via ingress
+DEBUG: found service url http://hook-**.35.240.84.8.nip.io
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+Updating webhooks for Owner: cb-kubecd and Repository: bdd-nh-1594734531 in git server: https://github.com
+Checking hooks for repository cb-kubecd/bdd-nh-1594734531 with user *************
+Found matching hook for url http://hook-**.35.240.84.8.nip.io/hook
+Updating GitHub webhook for cb-kubecd/bdd-nh-1594734531 for url http://hook-**.35.240.84.8.nip.io/hook
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+Updating webhooks for Owner: cb-kubecd and Repository: environment-pr-584-6-bdd-frontend-dev in git server: https://github.com
+Checking hooks for repository cb-kubecd/environment-pr-584-6-bdd-frontend-dev with user c**d-bot-test
+Found matching hook for url http://hook-**.35.240.84.8.nip.io/hook
+Updating GitHub webhook for cb-kubecd/environment-pr-584-6-bdd-frontend-dev for url http://hook-**.35.240.84.8.nip.io/hook
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+Updating webhooks for Owner: cb-kubecd and Repository: environment-pr-584-6-bdd-frontend-production in git server: https://github.com
+Checking hooks for repository cb-kubecd/environment-pr-584-6-bdd-frontend-production with user *************
+Found matching hook for url http://hook-**.35.240.84.8.nip.io/hook
+Updating GitHub webhook for cb-kubecd/environment-pr-584-6-bdd-frontend-production for url http://hook-**.35.240.84.8.nip.io/hook
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+DEBUG: getting vault name for namespace **
+DEBUG: system vault name from config **-vault-pr-584-6-bdd
+DEBUG: Using vault ingress because the Vault.DisableURLDiscovery is set in requirements file
+DEBUG: Finding ingress url for **-vault-pr-584-6-bdd in namespace **
+DEBUG: found service url http://vault-**.35.240.84.8.nip.io
+DEBUG: Connecting to vault on http://vault-**.35.240.84.8.nip.io
+Updating webhooks for Owner: cb-kubecd and Repository: environment-pr-584-6-bdd-frontend-staging in git server: https://github.com
+Checking hooks for repository cb-kubecd/environment-pr-584-6-bdd-frontend-staging with user c**d-bot-test
+Found matching hook for url http://hook-**.35.240.84.8.nip.io/hook
+Updating GitHub webhook for cb-kubecd/environment-pr-584-6-bdd-frontend-staging for url http://hook-**.35.240.84.8.nip.io/hook
+
+Showing logs for build [32mcb-kubecd-environment-pr-584-6-fsjhw-2[0m stage [32mrelease[0m and container [32mstep-verify-installation[0m
+verifying the Jenkins X installation in namespace **
+verifying pods
+Checking pod statuses
+POD                                              STATUS
+crier-6c4944b868-sh5n9                           Running
+deck-7f5c64b45d-4bn2b                            Running
+deck-7f5c64b45d-cjfmr                            Running
+hook-647f968ffb-djht4                            Running
+hook-647f968ffb-sw797                            Running
+horologium-9fdcd6b57-m4f86                       Running
+jenkins-x-chartmuseum-d87cbb789-4lrkz            Running
+jenkins-x-controllerbuild-cf8c866c8-js4ss        Running
+jenkins-x-controllerrole-6cdfdccd5b-w7cfn        Running
+jenkins-x-gcactivities-1594735200-rqd9k          Succeeded
+jenkins-x-gcpods-1594735200-q2bkk                Succeeded
+jenkins-x-heapster-54bdffbc79-wtlhk              Running
+jenkins-x-**ui-5f698cbcbf-69xv7                  Running
+jenkins-x-nexus-b69b7745b-dj22k                  Running
+**-vault-pr-584-6-bdd-0                          Running
+**-vault-pr-584-6-bdd-configurer-ccdfc95bc-9bpth Running
+pipeline-7dff794486-r79vk                        Running
+pipelinerunner-6cb48667b7-tqj56                  Running
+tekton-pipelines-controller-69d888758d-bpsmv     Running
+tide-6bcf8f9f7f-jtsp8                            Running
+vault-operator-655564fb8-mbz68                   Running
+Verifying the git config
+Verifying username ************* at git server github at https://github.com
+Found 1 organisations in git server https://github.com: cb-kubecd
+Validated pipeline user ************* on git server https://github.com
+Git tokens seem to be setup correctly
+Installation is currently looking: GOOD
